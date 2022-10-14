@@ -1,0 +1,17 @@
+{
+    "TrafficWatchType": "Http",
+    "TimeStamp": "2022-10-14T12:53:25.2421386Z",
+    "DatabaseName": "RavenDBLockingBugIsolated",
+    "CustomInfo": "N/A",
+    "ClientIP": "::ffff:192.168.0.120",
+    "CertificateThumbprint": null,
+    "RequestId": 10546,
+    "HttpMethod": "POST",
+    "ElapsedMilliseconds": 961757,
+    "ResponseStatusCode": 500,
+    "RequestUri": "http://192.168.0.201:8080/databases/RavenDBLockingBugIsolated/bulk_docs?raft-request-id=6c3fb245-30cd-4597-9328-ad9161d6a355",
+    "AbsoluteUri": "http://192.168.0.201:8080",
+    "RequestSizeInBytes": 0,
+    "ResponseSizeInBytes": 0,
+    "Type": "None"
+  },

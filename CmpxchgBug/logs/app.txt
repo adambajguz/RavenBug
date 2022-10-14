@@ -1,0 +1,82 @@
+dbug: Microsoft.Extensions.Hosting.Internal.Host[2]
+      Hosting started
+info: RavenDBLockingBugIsolated.DemoHostedService[0]
+      Acquiring lock bug-cc37c526-2374-43c0-8c3c-c4899d6d571b--1
+info: RavenDBLockingBugIsolated.DemoHostedService[0]
+      Lock acquired bug-cc37c526-2374-43c0-8c3c-c4899d6d571b--1 after 00:00:00.1552011
+info: RavenDBLockingBugIsolated.DemoHostedService[0]
+      Acquiring lock bug-cc37c526-2374-43c0-8c3c-c4899d6d571b--2
+crit: RavenDBLockingBugIsolated.DemoHostedService[0]
+      An error occurred
+      Raven.Client.Exceptions.RavenException: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at Sparrow.Server.AsyncManualResetEvent.WaitAsync(CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Sparrow.Server\AsyncManualResetEvent.cs:line 65
+   at Sparrow.Server.AsyncManualResetEvent.WaitAsync(CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Sparrow.Server\AsyncManualResetEvent.cs:line 65
+   at Raven.Server.ServerWide.RachisLogIndexNotifications.WaitForIndexNotification(Int64 index, CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\ServerWide\ClusterStateMachine.cs:line 4482
+   at Raven.Server.Routing.RequestRouter.HandlePath(RequestHandlerContext reqCtx) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\Routing\RequestRouter.cs:line 365
+   at Raven.Server.RavenServerStartup.RequestHandler(HttpContext context) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\RavenServerStartup.cs:line 253
+       ---> System.Threading.Tasks.TaskCanceledException: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at Sparrow.Server.AsyncManualResetEvent.WaitAsync(CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Sparrow.Server\AsyncManualResetEvent.cs:line 65
+   at Sparrow.Server.AsyncManualResetEvent.WaitAsync(CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Sparrow.Server\AsyncManualResetEvent.cs:line 65
+   at Raven.Server.ServerWide.RachisLogIndexNotifications.WaitForIndexNotification(Int64 index, CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\ServerWide\ClusterStateMachine.cs:line 4482
+   at Raven.Server.Routing.RequestRouter.HandlePath(RequestHandlerContext reqCtx) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\Routing\RequestRouter.cs:line 365
+   at Raven.Server.RavenServerStartup.RequestHandler(HttpContext context) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\RavenServerStartup.cs:line 253
+         --- End of inner exception stack trace ---
+         at Raven.Client.Exceptions.ExceptionDispatcher.Throw(JsonOperationContext context, HttpResponseMessage response, Action`1 additionalErrorInfo) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Client\Exceptions\ExceptionDispatcher.cs:line 119
+         at Raven.Client.Http.RequestExecutor.HandleUnsuccessfulResponse[TResult](ServerNode chosenNode, Nullable`1 nodeIndex, JsonOperationContext context, RavenCommand`1 command, HttpRequestMessage request, HttpResponseMessage response, String url, SessionInfo sessionInfo, Boolean shouldRetry, CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Client\Http\RequestExecutor.cs:line 1469
+         at Raven.Client.Http.RequestExecutor.ExecuteAsync[TResult](ServerNode chosenNode, Nullable`1 nodeIndex, JsonOperationContext context, RavenCommand`1 command, Boolean shouldRetry, SessionInfo sessionInfo, CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Client\Http\RequestExecutor.cs:line 890
+         at Raven.Client.Http.RequestExecutor.ExecuteAsync[TResult](ServerNode chosenNode, Nullable`1 nodeIndex, JsonOperationContext context, RavenCommand`1 command, Boolean shouldRetry, SessionInfo sessionInfo, CancellationToken token)
+         at Raven.Client.Documents.Session.AsyncDocumentSession.SaveChangesAsync(CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Client\Documents\Session\AsyncDocumentSession.cs:line 166
+         at RavenDBLockingBugIsolated.DemoHostedService.TryAcquireAsync(IDocumentStore documentStore, String name, CancellationToken cancellationToken) in Y:\GitHub\PackSite\LIBRARIES\Library.Modeling\examples\RavenDBLockingBugIsolated\DemoHostedService.cs:line 117
+         at RavenDBLockingBugIsolated.DemoHostedService.ExecuteAsync(CancellationToken stoppingToken) in Y:\GitHub\PackSite\LIBRARIES\Library.Modeling\examples\RavenDBLockingBugIsolated\DemoHostedService.cs:line 51
+fail: Microsoft.Extensions.Hosting.Internal.Host[9]
+      BackgroundService failed
+      Raven.Client.Exceptions.RavenException: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at Sparrow.Server.AsyncManualResetEvent.WaitAsync(CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Sparrow.Server\AsyncManualResetEvent.cs:line 65
+   at Sparrow.Server.AsyncManualResetEvent.WaitAsync(CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Sparrow.Server\AsyncManualResetEvent.cs:line 65
+   at Raven.Server.ServerWide.RachisLogIndexNotifications.WaitForIndexNotification(Int64 index, CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\ServerWide\ClusterStateMachine.cs:line 4482
+   at Raven.Server.Routing.RequestRouter.HandlePath(RequestHandlerContext reqCtx) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\Routing\RequestRouter.cs:line 365
+   at Raven.Server.RavenServerStartup.RequestHandler(HttpContext context) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\RavenServerStartup.cs:line 253
+       ---> System.Threading.Tasks.TaskCanceledException: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at Sparrow.Server.AsyncManualResetEvent.WaitAsync(CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Sparrow.Server\AsyncManualResetEvent.cs:line 65
+   at Sparrow.Server.AsyncManualResetEvent.WaitAsync(CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Sparrow.Server\AsyncManualResetEvent.cs:line 65
+   at Raven.Server.ServerWide.RachisLogIndexNotifications.WaitForIndexNotification(Int64 index, CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\ServerWide\ClusterStateMachine.cs:line 4482
+   at Raven.Server.Routing.RequestRouter.HandlePath(RequestHandlerContext reqCtx) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\Routing\RequestRouter.cs:line 365
+   at Raven.Server.RavenServerStartup.RequestHandler(HttpContext context) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\RavenServerStartup.cs:line 253
+         --- End of inner exception stack trace ---
+         at Raven.Client.Exceptions.ExceptionDispatcher.Throw(JsonOperationContext context, HttpResponseMessage response, Action`1 additionalErrorInfo) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Client\Exceptions\ExceptionDispatcher.cs:line 119
+         at Raven.Client.Http.RequestExecutor.HandleUnsuccessfulResponse[TResult](ServerNode chosenNode, Nullable`1 nodeIndex, JsonOperationContext context, RavenCommand`1 command, HttpRequestMessage request, HttpResponseMessage response, String url, SessionInfo sessionInfo, Boolean shouldRetry, CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Client\Http\RequestExecutor.cs:line 1469
+         at Raven.Client.Http.RequestExecutor.ExecuteAsync[TResult](ServerNode chosenNode, Nullable`1 nodeIndex, JsonOperationContext context, RavenCommand`1 command, Boolean shouldRetry, SessionInfo sessionInfo, CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Client\Http\RequestExecutor.cs:line 890
+         at Raven.Client.Http.RequestExecutor.ExecuteAsync[TResult](ServerNode chosenNode, Nullable`1 nodeIndex, JsonOperationContext context, RavenCommand`1 command, Boolean shouldRetry, SessionInfo sessionInfo, CancellationToken token)
+         at Raven.Client.Documents.Session.AsyncDocumentSession.SaveChangesAsync(CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Client\Documents\Session\AsyncDocumentSession.cs:line 166
+         at RavenDBLockingBugIsolated.DemoHostedService.TryAcquireAsync(IDocumentStore documentStore, String name, CancellationToken cancellationToken) in Y:\GitHub\PackSite\LIBRARIES\Library.Modeling\examples\RavenDBLockingBugIsolated\DemoHostedService.cs:line 117
+         at RavenDBLockingBugIsolated.DemoHostedService.ExecuteAsync(CancellationToken stoppingToken) in Y:\GitHub\PackSite\LIBRARIES\Library.Modeling\examples\RavenDBLockingBugIsolated\DemoHostedService.cs:line 51
+         at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+crit: Microsoft.Extensions.Hosting.Internal.Host[10]
+      The HostOptions.BackgroundServiceExceptionBehavior is configured to StopHost. A BackgroundService has thrown an unhandled exception, and the IHost instance is stopping. To avoid this behavior, configure this to Ignore; however the BackgroundService will not be restarted.
+      Raven.Client.Exceptions.RavenException: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at Sparrow.Server.AsyncManualResetEvent.WaitAsync(CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Sparrow.Server\AsyncManualResetEvent.cs:line 65
+   at Sparrow.Server.AsyncManualResetEvent.WaitAsync(CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Sparrow.Server\AsyncManualResetEvent.cs:line 65
+   at Raven.Server.ServerWide.RachisLogIndexNotifications.WaitForIndexNotification(Int64 index, CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\ServerWide\ClusterStateMachine.cs:line 4482
+   at Raven.Server.Routing.RequestRouter.HandlePath(RequestHandlerContext reqCtx) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\Routing\RequestRouter.cs:line 365
+   at Raven.Server.RavenServerStartup.RequestHandler(HttpContext context) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\RavenServerStartup.cs:line 253
+       ---> System.Threading.Tasks.TaskCanceledException: System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at Sparrow.Server.AsyncManualResetEvent.WaitAsync(CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Sparrow.Server\AsyncManualResetEvent.cs:line 65
+   at Sparrow.Server.AsyncManualResetEvent.WaitAsync(CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Sparrow.Server\AsyncManualResetEvent.cs:line 65
+   at Raven.Server.ServerWide.RachisLogIndexNotifications.WaitForIndexNotification(Int64 index, CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\ServerWide\ClusterStateMachine.cs:line 4482
+   at Raven.Server.Routing.RequestRouter.HandlePath(RequestHandlerContext reqCtx) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\Routing\RequestRouter.cs:line 365
+   at Raven.Server.RavenServerStartup.RequestHandler(HttpContext context) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Server\RavenServerStartup.cs:line 253
+         --- End of inner exception stack trace ---
+         at Raven.Client.Exceptions.ExceptionDispatcher.Throw(JsonOperationContext context, HttpResponseMessage response, Action`1 additionalErrorInfo) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Client\Exceptions\ExceptionDispatcher.cs:line 119
+         at Raven.Client.Http.RequestExecutor.HandleUnsuccessfulResponse[TResult](ServerNode chosenNode, Nullable`1 nodeIndex, JsonOperationContext context, RavenCommand`1 command, HttpRequestMessage request, HttpResponseMessage response, String url, SessionInfo sessionInfo, Boolean shouldRetry, CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Client\Http\RequestExecutor.cs:line 1469
+         at Raven.Client.Http.RequestExecutor.ExecuteAsync[TResult](ServerNode chosenNode, Nullable`1 nodeIndex, JsonOperationContext context, RavenCommand`1 command, Boolean shouldRetry, SessionInfo sessionInfo, CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Client\Http\RequestExecutor.cs:line 890
+         at Raven.Client.Http.RequestExecutor.ExecuteAsync[TResult](ServerNode chosenNode, Nullable`1 nodeIndex, JsonOperationContext context, RavenCommand`1 command, Boolean shouldRetry, SessionInfo sessionInfo, CancellationToken token)
+         at Raven.Client.Documents.Session.AsyncDocumentSession.SaveChangesAsync(CancellationToken token) in C:\Builds\RavenDB-Stable-5.4\54012\src\Raven.Client\Documents\Session\AsyncDocumentSession.cs:line 166
+         at RavenDBLockingBugIsolated.DemoHostedService.TryAcquireAsync(IDocumentStore documentStore, String name, CancellationToken cancellationToken) in Y:\GitHub\PackSite\LIBRARIES\Library.Modeling\examples\RavenDBLockingBugIsolated\DemoHostedService.cs:line 117
+         at RavenDBLockingBugIsolated.DemoHostedService.ExecuteAsync(CancellationToken stoppingToken) in Y:\GitHub\PackSite\LIBRARIES\Library.Modeling\examples\RavenDBLockingBugIsolated\DemoHostedService.cs:line 51
+         at Microsoft.Extensions.Hosting.Internal.Host.TryExecuteBackgroundServiceAsync(BackgroundService backgroundService)
+info: Microsoft.Hosting.Lifetime[0]
+      Application is shutting down...
+dbug: Microsoft.Extensions.Hosting.Internal.Host[3]
+      Hosting stopping
+dbug: Microsoft.Extensions.Hosting.Internal.Host[4]
+      Hosting stopped
